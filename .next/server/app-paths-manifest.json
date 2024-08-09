@@ -1,4 +1,4 @@
 {
-  "/(auth)/sign-in/[[...sign-in]]/page": "app/(auth)/sign-in/[[...sign-in]]/page.js",
-  "/(root)/discover/page": "app/(root)/discover/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(root)/create-podcast/page": "app/(root)/create-podcast/page.js"
 }
