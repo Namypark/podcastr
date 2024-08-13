@@ -10,7 +10,7 @@ const LeftSidebar = () => {
   const pathName = usePathname();
   const router = useRouter();
   return (
-    <section className="left_sidebar">
+    <section className="right-sidebar">
       <nav className="flex flex-col gap-6">
         <Link
           href="/"

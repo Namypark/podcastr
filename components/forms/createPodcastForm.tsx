@@ -26,6 +26,12 @@ import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
 import { Id } from "@/convex/_generated/dataModel";
 import GeneratePodcast from "../GeneratePodcast";
+import { GeneratePodcastProps, VoiceType } from "@/types";
+import GenerateThumbnail from "../GenerateThumbnail";
+import { toast } from "../ui/use-toast";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useRouter } from "next/navigation";
 
 export const CreatePodcastForm = () => {
   const voiceCategories = ["alloy", "shimmer", "nova", "echo", "onyx"];
@@ -43,9 +49,11 @@ export const CreatePodcastForm = () => {
   );
   const [audioDuration, setAudioDuration] = useState<number>(0);
   const [voicePrompt, setVoicePrompt] = useState<string>("");
-  const [voiceType, setVoiceType] = useState<string | null>(null);
+  const [voiceType, setVoiceType] = useState<VoiceType>();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  const router = useRouter();
+  const createPodcast = useMutation(api.podcasts.createPodcast);
   // ...
   const formSchema = z.object({
     podcastTitle: z.string().min(2, {
@@ -65,17 +73,46 @@ export const CreatePodcastForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       podcastTitle: "",
-      category: "",
+
       podcastDescription: "",
-      audioString: "",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    // Do something with the form data.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    try {
+      setIsSubmitting(true);
+      if (!audioUrl || !imageUrl || !voiceType) {
+        toast({
+          title: "Please generate audio and image ",
+        });
+        setIsSubmitting(false);
+        throw new Error("please generate audio image");
+      }
+      await createPodcast({
+        podcastTitle: data.podcastTitle,
+        podcastDescription: data.podcastDescription,
+        audioUrl,
+        imageUrl,
+        voiceType,
+        imagePrompt,
+        voicePrompt,
+        views: 0,
+        audioDuration,
+        audioStorageId: audioStorageId!,
+        imageStorageId: imageStorageId!,
+      });
+      router.push("/");
+    } catch (error) {
+      toast({
+        title: "Error",
+        variant: "destructive",
+      });
+      console.log(error);
+    }
+    console.log(data);
   }
 
   return (
@@ -105,7 +142,7 @@ export const CreatePodcastForm = () => {
             <FormLabel className="text-16 text-white-1 font-bold">
               Select AI Voice
             </FormLabel>
-            <Select onValueChange={(value) => setVoiceType(value)}>
+            <Select onValueChange={(value) => setVoiceType(value as VoiceType)}>
               <FormControl>
                 <SelectTrigger
                   className={cn(
@@ -158,24 +195,8 @@ export const CreatePodcastForm = () => {
           />
         </div>
         <div className="flex flex-col pt-10"></div>
-        <FormField
-          control={form.control}
-          name="audioString"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>AI prompt</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Provide text to AI to generate audio"
-                  className="resize-none input-class focus:ring-offset-orange-1"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="mt-10 w-full">
+
+        <div className="w-full">
           <GeneratePodcast
             setAudioStorageId={setAudioStorageId}
             setAudio={setAudioUrl}
@@ -184,6 +205,13 @@ export const CreatePodcastForm = () => {
             voicePrompt={voicePrompt}
             setVoicePrompt={setVoicePrompt}
             setAudioDuration={setAudioDuration}
+          />
+          <GenerateThumbnail
+            setImage={setImageUrl}
+            setImageStorageId={setImageStorageId}
+            image={imageUrl}
+            imagePrompt={imagePrompt}
+            setImagePrompt={setImagePrompt}
           />
         </div>
         <div className="mt-6 w-full">
