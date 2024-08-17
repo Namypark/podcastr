@@ -9,6 +9,9 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: "first-otter-45.convex.cloud"
+            }, {
+                protocol: 'https',
+                hostname: "img.clerk.com"
             }
         ],
     },

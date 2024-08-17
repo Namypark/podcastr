@@ -55,6 +55,7 @@ const useGeneratePodcast = (props: GeneratePodcastProps) => {
       });
     } catch (error) {
       console.log("There is an error generating podcast", error);
+      setIsGenerating(false);
       // todo: show error messages
       toast({
         variant: "destructive",
@@ -120,19 +121,6 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
           />
         )}
       </div>
-      {/* <input
-        type="file"
-        multiple
-        onChange={async (event) => {
-          const files = Array.from(event.target.files);
-          if (files.length === 0) {
-            return;
-          }
-          // optionally: do something with `files`...
-          const uploaded = await startUpload(files);
-          // optionally: do something with the response...
-        }}
-      /> */}
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 const Home = () => {
-  const tasks = useQuery(api.podcasts.getTrending);
+  const trendingPodcasts = useQuery(api.podcasts.getTrending);
 
   return (
     <div className="mt-9 flex flex-col gap-9">
@@ -16,12 +16,12 @@ const Home = () => {
         <h1 className="text-20 font-bold text-white-1">Trending Podcasts</h1>
 
         <div className="podcast_grid">
-          {podcastData.map(({ id, title, description, imgURL }) => (
+          {podcastData.map(({ _id, title, podcastDescription, imageUrl }) => (
             <PodcastCard
-              podcastId={id}
+              podcastId={_id}
               title={title}
-              description={description}
-              imgURL={imgURL}
+              description={podcastDescription}
+              imgURL={imageUrl}
               key={title}
             />
           ))}
@@ -32,3 +32,5 @@ const Home = () => {
 };
 
 export default Home;
+
+54943838;
