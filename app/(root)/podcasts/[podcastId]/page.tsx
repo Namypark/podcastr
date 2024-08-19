@@ -23,7 +23,7 @@ const PodcastDetails = ({
   // const podcast = useQuery(api.podcasts.getPodcastById, {
   //   podcastId: params.podcastId,
   const { user } = useUser();
-  console.log(user);
+
   const podcast = allTestPodcasts.find(
     (podcastData) => podcastData._id === podcastId
   );
@@ -68,13 +68,13 @@ const PodcastDetails = ({
         <div className="flex flex-col gap-4 ">
           <h1 className="text-white-1 text-16 font-bold">Transcription</h1>
           <p className="text-16 font-medium text-white-2 ">
-            {podcast!.voicePrompt}
+            {podcast?.voicePrompt}
           </p>
         </div>
         <div className="flex flex-col gap-4">
           <h1 className="text-white-1 text-16 font-bold">Thumbnail Prompt</h1>
           <p className="text-16 font-medium text-white-2">
-            {podcast!.imagePrompt}
+            {podcast?.imagePrompt}
           </p>
         </div>
       </div>

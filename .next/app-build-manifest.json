@@ -1,5 +1,11 @@
 {
   "pages": {
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
     "/(root)/podcasts/[podcastId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -10,21 +16,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(root)/layout.js"
     ],
-    "/layout": [
+    "/(auth)/sign-in/[[...sign-in]]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/app/(auth)/sign-in/[[...sign-in]]/page.js"
     ],
-    "/(root)/discover/page": [
+    "/(auth)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/discover/page.js"
+      "static/chunks/app/(auth)/layout.js"
     ],
-    "/(root)/profile/[[...profileId]]/page": [
+    "/(root)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/profile/[[...profileId]]/page.js"
+      "static/chunks/app/(root)/page.js"
     ]
   }
 }

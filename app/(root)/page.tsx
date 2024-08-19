@@ -6,6 +6,7 @@ import React from "react";
 
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import PodcastPlayer from "../../components/PodcastPlayer";
 
 const Home = () => {
   const trendingPodcasts = useQuery(api.podcasts.getTrending);
@@ -32,5 +33,3 @@ const Home = () => {
 };
 
 export default Home;
-
-54943838;

@@ -14,11 +14,11 @@ export const sidebarLinks = [
     route: "/create-podcast",
     label: "Create Podcast",
   },
-  {
-    imgURL: "assets/icons/profile.svg",
-    route: "/profile",
-    label: "Profile",
-  },
+  // {
+  //   imgURL: "assets/icons/profile.svg",
+  //   route: "/profile",
+  //   label: "Profile",
+  // },
 ];
 
 export const voiceDetails = [
@@ -216,7 +216,7 @@ export const allTestPodcasts = [
     authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
     imageStorageId: "img_storage_id_1",
     audioStorageId: "audio_storage_id_1",
-    audioUrl: "audio_url_1",
+    audioUrl: "https://www.computerhope.com/jargon/m/example.mp3",
   },
   {
     _id: "2",

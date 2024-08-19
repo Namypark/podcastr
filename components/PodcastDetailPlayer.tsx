@@ -9,6 +9,7 @@ import { allTestPodcasts } from "@/constants";
 import { useRouter } from "next/navigation";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
+import { useAudio } from "@/providers/AudioProvider";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -29,6 +30,7 @@ const PodcastDetailPlayer = ({
 
   const { toast } = useToast();
   const router = useRouter();
+  const { setAudio } = useAudio();
   const [isDeleting, setIsDeleting] = useState(false);
   const handleDelete = async () => {
     try {
@@ -54,13 +56,13 @@ const PodcastDetailPlayer = ({
   };
 
   const handlePlay = () => {
-    // setAudio({
-    //   title: podcastTitle,
-    //   audioUrl,
-    //   imageUrl,
-    //   author,
-    //   podcastId,
-    // });
+    setAudio({
+      title: podcastTitle,
+      audioUrl,
+      imageUrl,
+      author,
+      podcastId,
+    });
   };
 
   if (!imageUrl || !audioUrl) return <LoaderSpinner />;

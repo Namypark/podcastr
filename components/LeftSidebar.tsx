@@ -57,6 +57,26 @@ const LeftSidebar = () => {
             );
           }
         )}
+        <SignedIn>
+          <Link
+            href="/profile"
+            className={cn(
+              "gap-3 text-16-semibold text-gray-1 flex items-center py-4 max-lg:px-4 justify-center lg:justify-start hover:bg-nav-focus",
+              {
+                "bg-nav-focus border-r-4 border-orange-1":
+                  pathName === "/profile",
+              }
+            )}
+          >
+            <Image
+              src="/assets/icons/profile.svg"
+              width={23}
+              height={27}
+              alt="Profile"
+            />
+            Profile
+          </Link>
+        </SignedIn>
       </nav>
       <SignedOut>
         <div className="flex-center w-full pb-14  max-lg:px-4 lg:pr-8">

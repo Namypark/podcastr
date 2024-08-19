@@ -37,8 +37,6 @@ const Carousel = ({ fansLikeDetail }: CarouselProps) => {
     fansLikeDetail &&
     fansLikeDetail?.filter((item: any) => item.totalPodcasts > 0);
 
-  console.log(slides);
-
   if (!slides) return <LoaderSpinner />;
   return (
     <section

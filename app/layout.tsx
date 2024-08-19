@@ -3,7 +3,8 @@ import "@/styles/globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { ConvexClerkProvider } from "./providers/ConvexClerkProvider";
+import { ConvexClerkProvider } from "@/providers/ConvexClerkProvider";
+import AudioProvider from "@/providers/AudioProvider";
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,22 +26,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-dark-300 font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ConvexClerkProvider>{children}</ConvexClerkProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ConvexClerkProvider>
+      <html lang="en">
+        <AudioProvider>
+          <body
+            className={cn(
+              "min-h-screen bg-dark-300 font-sans antialiased",
+              fontSans.variable
+            )}
+          >
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </body>
+        </AudioProvider>
+      </html>
+    </ConvexClerkProvider>
   );
 }

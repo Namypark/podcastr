@@ -89,7 +89,7 @@ export interface AudioProps {
 
 export interface AudioContextType {
   audio: AudioProps | undefined;
-  setAudio: React.Dispatch<React.SetStateAction<AudioProps | undefined>>;
+  setAudio: React.Dispatch<SetStateAction<AudioProps | undefined>>;
 }
 
 export interface PodcastCardProps {
