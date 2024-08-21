@@ -1,5 +1,0 @@
-{
-  "/(root)/page": "app/(root)/page.js",
-  "/(root)/podcasts/[podcastId]/page": "app/(root)/podcasts/[podcastId]/page.js",
-  "/(root)/discover/page": "app/(root)/discover/page.js"
-}
