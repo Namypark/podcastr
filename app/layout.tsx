@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { ConvexClerkProvider } from "@/providers/ConvexClerkProvider";
 import AudioProvider from "@/providers/AudioProvider";
+import ModeToggle from "@/components/ModeToggle";
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -39,7 +40,7 @@ export default function RootLayout({
               attribute="class"
               defaultTheme="system"
               enableSystem
-              disableTransitionOnChange
+              // disableTransitionOnChange
             >
               {children}
             </ThemeProvider>

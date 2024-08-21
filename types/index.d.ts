@@ -49,14 +49,18 @@ export interface TopPodcastersProps {
   totalPodcasts: number;
 }
 export declare interface TestDataProps {
-  _id: number | string;
-  title: string;
-  description: string;
+  _id: string;
+  podcastTitle: string;
+  podcastDescription: string;
   imageUrl: string;
-  userImg: string;
-  authorName: string;
+  authorImageUrl: string;
+  author: string;
   voicePrompt: string;
   imagePrompt: string;
+  authorId: string;
+  imageStorageId: string;
+  audioStorageId: string;
+  audioUrl: string;
 }
 
 export declare interface EmptyStateProps {
@@ -114,3 +118,9 @@ export type UseDotButtonType = {
   scrollSnaps: number[];
   onDotButtonClick: (index: number) => void;
 };
+
+interface SearchBarProps {
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // search: string;
+  // setSearch: React.Dispatch<React.SetStateAction<string>>;
+}
