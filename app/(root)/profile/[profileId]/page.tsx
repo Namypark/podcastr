@@ -23,6 +23,9 @@ const Profile = ({
   // const podcasts = useQuery(api.podcasts.getPodcastAuthorId, {
   //   authorId: profileId,
   // });
+  // const user = useQuery(api.users.getUserById, {
+  //   clerkId: profileId,
+  // })
 
   const podcasts = allTestPodcasts.filter(
     (podcast) => podcast.authorId === profileId
@@ -49,13 +52,15 @@ const Profile = ({
       });
     }
   };
+  if (!user || !podcasts) return <LoaderSpinner />;
 
   return (
     <section className="mt-9 gap-3 flex flex-col">
-      <h1 className="text-20 font-semibold text-white-1">Podcaster Profile</h1>
+      <h1 className="text-20 font-semibold text-white-1 max-md:text-center">
+        Podcaster Profile
+      </h1>
 
       <div className="mt-6 flex gap-3 flex-col sm:flex-row items-center">
-        {!user && <LoaderSpinner />}
         <Image
           src={user?.imageUrl!}
           height={250}
@@ -64,16 +69,18 @@ const Profile = ({
           className="rounded-xl "
         />
         <div className="flex flex-col space-y-6 justify-between">
-          <p className="flex gap-3">
+          <div className="flex gap-3 items-center max-md:justify-center">
             <Image
               src="/assets/icons/verified.svg"
               width={16}
               height={16}
               alt="verified"
             />
-            <span className="text-16 text-gray-1">Verified Creator</span>
-          </p>
-          <h1 className="text-white-1 font-extrabold text-32">
+            <span className="text-16 text-gray-1 max-md:text-center">
+              Verified Creator
+            </span>
+          </div>
+          <h1 className="text-white-1 font-extrabold text-32 max-md:text-center">
             {user?.fullName}
           </h1>
           <div className="flex-center gap-4 ">
@@ -101,7 +108,7 @@ const Profile = ({
           </Button>
         </div>
       </div>
-      <section className="flex flex-col gap-6 mt-6 space-y-4">
+      <section className="flex flex-col gap-6 mt-9 space-y-4">
         <h1 className="text-white-1 text-20 font-bold">All podcasts</h1>
         {podcasts ? (
           podcasts.length > 0 ? (

@@ -12,7 +12,7 @@ const PodcastPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0.01);
+  const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
