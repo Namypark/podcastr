@@ -1,3 +1,6 @@
+const authorId = process.env.NEXT_PUBLIC_CLERK_ID;
+
+console.log(authorId);
 export const sidebarLinks = [
   {
     imgURL: "assets/icons/home.svg",
@@ -213,10 +216,11 @@ export const allTestPodcasts = [
       "Create a voice narration that is friendly, engaging, and clear, suitable for an audience interested in technology and innovation. The voice should be expressive and articulate, providing detailed explanations and captivating storytelling.",
     imagePrompt:
       "Design an image that represents the essence of cutting-edge technology and innovation. The artwork should include elements of futuristic devices, sleek design, and vibrant colors, evoking a sense of curiosity and excitement.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_1",
     audioStorageId: "audio_storage_id_1",
-    audioUrl: "https://www.computerhope.com/jargon/m/example.mp3",
+    audioUrl: "/assets/audio/joe.wav",
+    views: 100000,
   },
   {
     _id: "2",
@@ -230,9 +234,10 @@ export const allTestPodcasts = [
       "Deliver the news in a calm and authoritative voice, with clear enunciation and a measured pace. The voice should be trustworthy and professional, giving listeners a sense of assurance and clarity.",
     imagePrompt:
       "Create a graphic that embodies the concept of modern news. Use elements such as a digital newspaper or a futuristic newsroom setting, with a sleek and minimalist design.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_2",
-    audioUrl: "audio_url_2",
+    audioUrl: "/assets/audio/Futur.wav",
+    views: 100000,
     audioStorageId: "audio_storage_id_2",
   },
   {
@@ -247,9 +252,10 @@ export const allTestPodcasts = [
       "The conversation should be lively and engaging, with a friendly and personable tone. The voice should be warm and inviting, making listeners feel as if they are part of the discussion.",
     imagePrompt:
       "Design an image that represents a high-profile conversation. Include visuals of microphones, waveforms, and a vibrant color palette that conveys energy and excitement.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_3",
-    audioUrl: "audio_url_3",
+    audioUrl: "/assets/audio/waveform.wav",
+    views: 100000,
     audioStorageId: "audio_storage_id_3",
   },
   {
@@ -264,10 +270,11 @@ export const allTestPodcasts = [
       "Provide a clear and concise narration that is informative and insightful. The voice should be professional and articulate, offering a straightforward delivery of the latest tech news and insights.",
     imagePrompt:
       "Create a cover image that illustrates the daily updates in technology. Use icons representing gadgets, software, and data, with a clean and modern design.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_4",
     audioStorageId: "audio_storage_id_4",
-    audioUrl: "audio_url_4",
+    audioUrl: "/assets/audio/Tech.wav",
+    views: 100000,
   },
   {
     _id: "5",
@@ -281,15 +288,16 @@ export const allTestPodcasts = [
       "Narrate with a passionate and motivational tone, suitable for an audience seeking business and personal development advice. The voice should be energetic and inspiring, with a focus on storytelling and actionable insights.",
     imagePrompt:
       "Design a visual that captures the essence of business and entrepreneurship. Include elements such as graphs, charts, and dynamic typography, with a bold and confident look.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_5",
     audioStorageId: "audio_storage_id_5",
-    audioUrl: "audio_url_5",
+    audioUrl: "/assets/audio/Garyvee.wav",
+    views: 100000,
   },
   {
     _id: "6",
     podcastTitle: "Syntax",
-    podcastDescription: "Join Michelle Obama in conversation",
+    podcastDescription: "Join Obama in conversation",
     imageUrl:
       "https://lovely-flamingo-139.convex.cloud/api/storage/b8ea40c7-aafb-401a-9129-73c515a73ab5",
     authorImageUrl: "/assets/images/player1.png",
@@ -298,10 +306,11 @@ export const allTestPodcasts = [
       "Engage in a dialogue that is technical yet approachable, ideal for developers and tech enthusiasts. The voice should be knowledgeable and enthusiastic, offering detailed explanations and practical advice.",
     imagePrompt:
       "Create a cover that reflects the theme of coding and web development. Incorporate visuals of code snippets, browsers, and responsive design, with a vibrant and modern aesthetic.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_6",
     audioStorageId: "audio_storage_id_6",
-    audioUrl: "audio_url_6",
+    audioUrl: "/assets/audio/syntax.wav",
+    views: 100000,
   },
   {
     _id: "7",
@@ -315,10 +324,11 @@ export const allTestPodcasts = [
       "Narrate in a bold and candid style, capturing the spontaneity and humor of the podcast. The voice should be charismatic and lively, drawing listeners into the conversation.",
     imagePrompt:
       "Illustrate a theme that represents candid discussions and entertainment. Use graphics of a studio setting, microphones, and vibrant colors, with a playful and engaging design.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_7",
     audioStorageId: "audio_storage_id_7",
-    audioUrl: "audio_url_7",
+    audioUrl: "/assets/audio/IMPAULSIVE.wav",
+    views: 100000,
   },
   {
     _id: "8",
@@ -332,9 +342,10 @@ export const allTestPodcasts = [
       "Deliver the content in an insightful and thought-provoking manner, appealing to an audience interested in technology and innovation. The voice should be clear and engaging, with a focus on explaining complex ideas in an accessible way.",
     imagePrompt:
       "Design an image that showcases innovative technology. Include visuals of cutting-edge devices, AI, and futuristic elements, with a sophisticated and sleek design.",
-    authorId: "user_2kX8UsW5HW3k2ToeHQZOKVQ5lqc",
+    authorId,
     imageStorageId: "img_storage_id_8",
     audioStorageId: "audio_storage_id_8",
-    audioUrl: "audio_url_8",
+    audioUrl: "/assets/audio/TedTech.wav",
+    views: 100000,
   },
 ];

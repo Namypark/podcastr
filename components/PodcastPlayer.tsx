@@ -6,18 +6,19 @@ import * as Slider from "@radix-ui/react-slider";
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useDebounce } from "@/lib/useDebounce";
 
 const PodcastPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(0.01);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
-
   const { audio } = useAudio();
 
+  const debouncedAudioUrl = useDebounce(audio?.audioUrl, 2000);
   //   console.log(audio);
 
   const togglePlayPause = () => {
@@ -42,7 +43,7 @@ const PodcastPlayer = () => {
       audioRef.current &&
       audioRef.current.currentTime &&
       audioRef.current.duration &&
-      audioRef.current.currentTime + 5 > audioRef.current.duration
+      audioRef.current.currentTime + 5 < audioRef.current.duration
     ) {
       audioRef.current.currentTime += 5;
     }
@@ -73,17 +74,23 @@ const PodcastPlayer = () => {
 
   useEffect(() => {
     const audioElement = audioRef.current;
-    if (audio?.audioUrl) {
+    if (debouncedAudioUrl) {
       if (audioElement) {
-        audioElement.play().then(() => {
-          setIsPlaying(true);
-        });
+        audioElement
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Error playing audio", error);
+            setIsPlaying(false);
+          });
       }
     } else {
       audioElement?.pause();
       setIsPlaying(true);
     }
-  }, [audio]);
+  }, [debouncedAudioUrl]);
 
   // Adjust the volume based on slider
   useEffect(() => {

@@ -81,7 +81,7 @@ const PodcastDetailPlayer = ({
               {podcastTitle}
             </h1>
             <figure
-              className="flex gap-3 items-center justify-start"
+              className="flex gap-3 items-center justify-start cursor-pointer"
               onClick={() => router.push(`/profile/${authorId}`)}
             >
               <Image
@@ -89,7 +89,7 @@ const PodcastDetailPlayer = ({
                 width={30}
                 height={30}
                 alt="author-image"
-                className="rounded-full size-[30px] object-cover"
+                className="rounded-full size-[30px] object-cover "
               />
               <h2 className="text-16 font-normal text-white-3">{author}</h2>
             </figure>

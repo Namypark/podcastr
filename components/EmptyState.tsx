@@ -9,6 +9,7 @@ const EmptyState = ({
   buttonLink,
   buttonText,
   search,
+  imageUrl,
 }: EmptyStateProps) => {
   return (
     <section className="flex-center size-full flex-col gap-3">
@@ -31,7 +32,7 @@ const EmptyState = ({
           <Button className="bg-orange-1 w-full">
             <Link href={buttonLink} className="gap-1 flex">
               <Image
-                src="/assets/icons/discover.svg"
+                src={`/assets/icons/${imageUrl ? imageUrl : "discover"}.svg`}
                 width={20}
                 height={20}
                 alt="discover"

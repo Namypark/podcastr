@@ -67,7 +67,8 @@ export declare interface EmptyStateProps {
   title: string;
   buttonLink: string;
   buttonText: string;
-  search: string;
+  search?: string;
+  imageUrl?: string;
 }
 
 export declare interface PodcastDetailPlayerProps {
