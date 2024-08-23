@@ -156,7 +156,7 @@ const PodcastPlayer = () => {
             <span className="text-white-2 text-12 font-normal">-5</span>
           </div>
           <Image
-            src={`/assets/icons/${isPlaying ? "pause" : "play"}.svg`}
+            src={`/assets/icons/${isPlaying ? "Pause" : "play-gray"}.svg`}
             alt="shuffle"
             width={24}
             height={24}
