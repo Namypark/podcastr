@@ -99,7 +99,7 @@ const PodcastDetailPlayer = ({
             onClick={handlePlay}
           >
             <Image
-              src="/assets/icons/play.svg"
+              src="/assets/icons/Play.svg"
               width={20}
               height={20}
               alt="play-button"
